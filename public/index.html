@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Accidentes Viales</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">-->
+    <link rel="stylesheet" href="/css/styleHome.css">   
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+        <div class="div-logo"><img src="/img/Escudo-Morelia-BCO.png" alt="logo"></div>
+        <div class="div-logo"><img src="/img/logo-blanco.png" alt="logo"></div>
+        <h1>Dashboard de Accidentes Viales</h1>
+        <button id="toggleDashboardBtn">Ocultar Panel</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="dashboardPanel" class="dashboard">
+        <div class="card">
+            <h3>Tipos de Accidentes</h3>
+            <canvas id="hourlyChartbarras"></canvas>
+            <canvas id="tipoAccidenteChart" width="300" height="150"></canvas>
+        </div>
+        <div class="card">
+            <div id="sidebar">
+            <label for="tipoAccidente">Selecciona el tipo de accidente:</label>
+            <select id="tipoAccidente">
+                <option value="Todos">Todos</option>
+                <option value="velocidad inmoderada">Velocidad inmoderada</option>
+                <option value="viro indebidamente">viro indebidamente</option>
+                <option value="no guardo distancia">no guardo distancia</option>
+                <option value="imprudencia">imprudencia</option>
+            </select>
+            <div id="totalAccidentes" width="300" height="150" style="text-align: center; font-weight: bold; margin-bottom: 10px;"></div>
+            <canvas id="hourlyChart"></canvas>
+            </div>
+        </div>
+        <div class="card">
+            <h3>10 zonas con más accidentes viales en la ciudad</h3>
+            <ol id="list"></ol>
+        </div>
+        </section>
+    <div id="map"></div></main>
+
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/map.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="/js/style.js"></script>
+
+    
+</body>
+</html>
