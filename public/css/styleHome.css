@@ -171,15 +171,3 @@ canvas {
     font-size: 14px;
 }
 
-
-
-
-
-
-.hidden{
-    transform: translateX(-100%);
-}
-
-#sidebarPanel{
-    
-}
