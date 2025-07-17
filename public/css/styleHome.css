@@ -121,3 +121,57 @@ canvas {
     width: 100%;
     height: 100%;
 }
+
+
+
+
+/*PARA EL PANEL IZQUIERDO*/
+
+#sidebarPanel {
+    position: fixed;
+    top: 70px; /* ajusta si tienes navbar */
+    left: 0;
+    width: 280px;
+    height: calc(100% - 70px);
+    background-color: #f8f8f8;
+    border-right: 2px solid #ccc;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 999;
+}
+
+#sidebarPanel h2 {
+    background-color: #6AA84F;
+    color: white;
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+}
+
+#sidebarPanel h3 {
+    background-color: #6AA84F;
+    color: white;
+    padding: 8px;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.filter-group {
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.filter-group button {
+    padding: 6px 10px;
+    border: 1px solid black;
+    background-color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+main {
+    margin-left: 300px; /* para que no se solape con el panel */
+    padding: 20px;
+}
