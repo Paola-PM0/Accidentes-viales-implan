@@ -131,13 +131,13 @@ canvas {
     position: fixed;
     top: 70px; /* ajusta si tienes navbar */
     left: 0;
-    width: 280px;
-    height: calc(100% - 70px);
+    width: 300px;
+    height: calc(100vh - 70px);
     background-color: #f8f8f8;
     border-right: 2px solid #ccc;
     padding: 20px;
     overflow-y: auto;
-    z-index: 999;
+    z-index: 900;
 }
 
 #sidebarPanel h2 {
@@ -174,7 +174,9 @@ canvas {
 
 main {
     margin-left: 300px; /* para que no se solape con el panel y */ 
+    margin-top: 70px;
     padding: 20px;
+    
     transition: margin-left 0.3s ease;
 } 
 
