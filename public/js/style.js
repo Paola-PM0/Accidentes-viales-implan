@@ -9,20 +9,20 @@
    });
 
 
-const sidebar = document.getElementById('sidebarPanel');
-const main = document.querySelector('main');
-const toggleTab = document.getElementById('sidebarToggleTab');
+document.addEventListener('DOMContentLoaded', function () {
+   const sidebar = document.getElementById('sidebarPanel');
+   const main = document.querySelector('main');
+   const toggleTab = document.getElementById('sidebarToggleTab');
 
-toggleTab.addEventListener('click', function () {
-   sidebar.classList.toggle('hidden');
+   toggleTab.addEventListener('click', function () {
+      sidebar.classList.toggle('hidden');
 
-   if (sidebar.classList.contains('hidden')) {
-      main.style.marginLeft = '0';
-      toggleTab.style.left = '0';
-      toggleTab.innerHTML = '☰'; // puedes cambiarlo por ➤ si prefieres
-   } else {
-      main.style.marginLeft = '300px';
-      toggleTab.style.left = '280px';
-      toggleTab.innerHTML = '◀'; // para indicar que se puede ocultar
-   }
+      if (sidebar.classList.contains('hidden')) {
+         main.style.marginLeft = '0';
+         toggleTab.style.left = '0';
+      } else {
+         main.style.marginLeft = '300px';
+         toggleTab.style.left = '280px';
+      }
+   });
 });
