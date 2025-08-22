@@ -391,7 +391,7 @@ function filtroBtns(){
         if (ano !== "Todos") {
             cqlFilter = `anio = '${ano}'`;
         } 
-        aplicarFiltro(cqlFilter, label); 
+        filtroCql(cqlFilter, label); 
     });
     });
 
@@ -407,5 +407,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initMap();
     actualizarGraficaBarras(); // <-- Aquí se genera la gráfica de barras automáticamente
     listaCiudades();
+    filtroBtns();
 });
 
