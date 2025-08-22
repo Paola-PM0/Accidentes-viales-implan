@@ -1,5 +1,4 @@
 //const { get, validateHeaderName } = require("node:http");
-
 let map;
 let wfsLayer;
 let chart;
@@ -31,15 +30,17 @@ function initMap() {
     document.getElementById('tipoAccidente').addEventListener('change', (event) => {
         const tipoSelecionado = event.target.value;
 
-        map.removeLayer(wmsLayer);
+        //map.removeLayer(wmsLayer);
 
         //filtro para CQL
         let cqlFilter = "";
         
         if(tipoSelecionado !== "Todos"){
-            cqlFilter = `circunstancias = '${tipoSelecionado}'`;     
+            cqlFilter = `circunstancias = '${tipoSelecionado}'`;       
         }
-        wmsLayer = L.tileLayer.wms('https://geoaccidentes.duckdns.org/geoserver/ne/wms', {
+
+        filtroCql(cqlFilter, tipoSelecionado); 
+        /*wmsLayer = L.tileLayer.wms('https://geoaccidentes.duckdns.org/geoserver/ne/wms', {
             layers: 'ne:Accidentes_2018_2024',
             format: 'image/png',
             transparent: true,
@@ -50,7 +51,6 @@ function initMap() {
         /*cargarWFS(cqlFilter);*/
         actualizarGrafica(tipoSelecionado);
     });
-
 
     //POP
     //funcion para mostrar informacion del punto 
@@ -158,7 +158,6 @@ async function actualizarGrafica(tipoSelecionado) {
 }
 */
 
-
 async function actualizarGrafica(tipoSelecionado) {
     const url = tipoSelecionado === "Todos"
         ? 'https://api-geoaccidentes.duckdns.org/api/datos'
@@ -249,7 +248,6 @@ function renderizarGrafica(labels, data) {
         }
     });
 }
-
 
 async function actualizarGraficaBarras(){
     try {
@@ -355,6 +353,50 @@ function crearLista(labels, valores){
         lista.appendChild(crearli);
         
     }
+
+}
+
+function filtroCql(cqlFilter, tipoSelecionado = "todos"){
+    //remover la capa anterior 
+    if (wmsLayer) {
+        map.removeLayer(wmsLayer);
+    }
+    wmsLayer = L.tileLayer.wms('https://geoaccidentes.duckdns.org/geoserver/ne/wms', {
+            layers: 'ne:Accidentes_2018_2024',
+            format: 'image/png',
+            transparent: true,
+            CQL_FILTER: cqlFilter,
+            version: '1.1.0',
+            attribution: 'GeoServer WMS'
+        }).addTo(map);
+}
+
+function filtroBtns(){
+
+    const botones = document.querySelectorAll('#btns button')
+
+    botones.forEach(boton => {
+        boton.addEventListener('click', (e) => {
+        // Quitar clase activa a todos
+        botones.forEach(b => b.classList.remove('activo'));
+        // Agregar clase activa al botón clicado
+        e.target.classList.add('activo');
+
+        //leer el tipo de filtro de acuerdo con el atributo del boton
+
+        const ano = e.target.getAttribute("data-ano");
+        const label = e.target.textContent;
+
+        let cqlFilter = "";
+        if (ano !== "Todos") {
+            cqlFilter = `anio = '${ano}'`;
+        } 
+        aplicarFiltro(cqlFilter, label); 
+    });
+    });
+
+
+
 
 }
 
