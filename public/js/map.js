@@ -395,7 +395,38 @@ function filtroBtns(){
     });
     });
 
+}
 
+
+function filtroBtnsPersonasCondicion(){
+
+    const botones = document.querySelectorAll('#btns button')
+
+    botones.forEach(boton => {
+        boton.addEventListener('click', (e) => {
+        // Quitar clase activa a todos
+        botones.forEach(b => b.classList.remove('activo'));
+        // Agregar clase activa al botón clicado
+        e.target.classList.add('activo');
+
+        //leer el tipo de filtro de acuerdo con el atributo del boton
+
+        const condicion = e.target.getAttribute("data-condicion");
+        const label = e.target.textContent;
+
+        let cqlFilter = "";
+        
+        if (condicion === "Todos") {
+                cqlFilter = ""; // sin filtro
+        } else if (condicion === "Lesionados") {
+                cqlFilter = "trasladado_a ILIKE '%hospital%'";
+        } else if (condicion === "Fallecidos") {
+                cqlFilter = "trasladado_a ILIKE '%semefo%'";
+            }   
+
+        filtroCql(cqlFilter, label); 
+    });
+    });
 
 
 }
